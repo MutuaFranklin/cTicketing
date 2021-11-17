@@ -17,6 +17,8 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminEditEventComponent } from './components/admin-edit-event/admin-edit-event.component';
+import { AdminViewEventComponent } from './components/admin-view-event/admin-view-event.component';
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -30,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     EventDetailsComponent,
     UpcomingEventsComponent,
     AdminLoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    AdminEditEventComponent,
+    AdminViewEventComponent,
   ],
   imports: [
     BrowserModule,
