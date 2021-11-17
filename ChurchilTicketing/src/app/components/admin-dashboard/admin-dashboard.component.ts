@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Admin } from 'src/app/models/admin';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { EventsService } from 'src/app/services/events.service';
+import { first } from 'rxjs/operators';
+import { Event } from 'src/app/models/event';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -19,10 +24,18 @@ export class AdminDashboardComponent implements OnInit {
   vip_ticket!: any;
   max_attendance!: any;
   error!:any;
+  events!:Event[];
+  currentUser!:Admin;
+  showModal!: boolean;
+  event:any;
+
+
 
   constructor(
-    private signoutService: AuthenticationService,
+    private authService: AuthenticationService,
     private eventService: EventsService,
+    private router: Router,
+
     )
     {}
 
@@ -58,7 +71,32 @@ export class AdminDashboardComponent implements OnInit {
     this.max_attendance = event.target.value;
   }
 
-  ngOnInit(): void {
+  showEventModal(id:any){
+    this.showModal = true; // Show-Hide Modal Check
+
+
+
+}
+
+
+  ngOnInit() {
+    let promise = new Promise <void> ((resolve,reject)=>{
+      this.eventService.allEvents().toPromise().then(
+        (response:any) => {
+          console.log(response)
+        this.events = response;
+        resolve()
+      },
+      (error:string) => {
+
+      })
+    })
+
+    this.authService.getCurrentUser().pipe(first()).subscribe((loggedUser: Admin) => {
+      this.currentUser = loggedUser;
+      console.log(loggedUser)
+    });
+
     // Jquery
     $('.openNav').on('click', function () {
       $('#mySidenav').css({ width: '250px' });
@@ -71,10 +109,29 @@ export class AdminDashboardComponent implements OnInit {
       $('#main').css({ marginLeft: '0' });
       $('.openNav').fadeIn(1000);
     });
+
+    $('.dashboard-btn').on('click', function () {
+      $('.dashboard').fadeIn(1000);
+      $('.events').hide();
+      $('.transactions').fadeOut(700);
+
+    });
+
+    $('.events-btn').on('click', function () {
+      $('.dashboard').hide();
+      $('.transactions').hide();
+      $('.events').fadeIn(700);
+    });
+
+    $('.transactions-btn').on('click', function () {
+      $('.dashboard').hide();
+      $('.transactions').fadeIn(1000);
+      $('.events').hide();
+    });
   }
 
   adminLogout() {
-    this.signoutService.logout();
+    this.authService.logout();
   }
 
   publishEvent(){
@@ -107,6 +164,13 @@ export class AdminDashboardComponent implements OnInit {
     }
     );
 
+  }
+
+  goToView(id: any){
+    this.router.navigate(['/admin-view',id])
+  }
+  goToEdit(id: any){
+    this.router.navigate(['/admin-edit',id])
   }
 
 }
