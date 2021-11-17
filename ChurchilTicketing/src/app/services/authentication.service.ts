@@ -28,11 +28,6 @@ export class AuthenticationService {
   }
 
 
-
-
-
-
-
   loginAdmin(user: Admin) {
     return this.http.post<any>(`${this.authUrl}auth/`, user)
       .subscribe((res: any) => {
@@ -67,15 +62,16 @@ export class AuthenticationService {
     }
   }
 
+  // current user
+  getCurrentUser():Observable<any>{
+    let user = this.authUrl+ 'current_user'
+    return this.http.get(user, {headers: this.headers})
 
-  // logout() {
-  //   this.loggedIn.next(false);
-  //   this.router.navigate(['login']);
-  // }
+  }
 
 
 
 
-}
+  }
 
 
