@@ -43,7 +43,7 @@ Open Terminal. Change the current working directory to the location where you wa
 ```
 
 ```
-Type https://github.com/MutuaFranklin/HomeservicesApp and press Enter to create your local clone.
+Type https://github.com/MutuaFranklin/cTicketing and press Enter to create your local clone.
 
 ```
 
@@ -58,29 +58,29 @@ Run source virtual/bin/activate to activate the virtual environment and python m
 ```
 
 ## BDD
-    As a user, I would like to:
+As a user, I would able to:
 
-- Register and signin to the app
-- View all available services
-- View all professional experts for each service whom we share same location
-- Search for profile and service 
-- Review and rate a service provider profile
-- View my and service provider profiles
-- Update my profile
+- view events details and reserve tickets (VIP or regular) NB: One user can reserve up to 5 tickets.
+- get an email notification for the successful reservation.
+
+As an Admin, I would able to: 
+- add/ edit or remove events
+- specify the ticket price specifying ticket type (VIP and regular) for each event.
+- specify the maximum number of attendees for each event.
 
 
 ## Technologies Used
+- Angular Frontend framework
 - Python Django Framework
-- JavaScript
 - Bootstrap
 - CSS
 - PostgreSQL
-- Social Authentication: Google
-- Mapbox
+- Heroku
+- Github
 
 ## Live link
 
-Live link: [HomeservicesApp live link](https://pyhomeservicies.herokuapp.com/)
+Live link: [cTicketing live link](https://pyhomeservicies.herokuapp.com/)
 
 ## Support and contact details
 
