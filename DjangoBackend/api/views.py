@@ -126,7 +126,7 @@ def event_id(request, event_pk):
 
 
 @api_view(['GET', 'PUT'])
-@permission_classes((IsAuthenticated,))
+@permission_classes((AllowAny,))
 def current_user(request):
     user = request.user
 
