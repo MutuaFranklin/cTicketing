@@ -1,0 +1,17 @@
+.login{
+  background-color: aliceblue;
+  height: 100vh;
+
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.panel-heading{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

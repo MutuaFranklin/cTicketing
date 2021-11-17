@@ -1,0 +1,140 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="col-md-12 mb-5 user" >
+    <img src="../../../assets/user.png" alt="" width="100%" height="50%">
+    <h5 class="mt-3">Frankfreek</h5>
+    <p>Admin</p>
+    <p> {{todayDate | date}}</p>
+    <p>{{todayDate | date:'shortTime'}}</p>
+
+
+  </div>
+  <a href="#">Dashboard</a>
+  <a href="#">Events</a>
+  <a href="#">Transactions</a>
+  <a href="landing">Main site</a>
+  <a (click)="adminLogout()">Logout</a>
+</div>
+
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" class="openNav" onclick="openNav()">&#9776;</span>
+  <h6>Churchill Show Ticketing Admin Panel</h6>
+
+  <div class="container-fluid icons">
+    <div class="row">
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/past-events.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>50</h4>
+          <p>Past Events</p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/ticket.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>1000</h4>
+          <p>Tickets Sold</p>
+        </div>
+      </div>
+
+      <!-- <div class="card" style="width: 18rem;">
+        <img src="../../../assets/sales-rem.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>1000</h4>
+          <p>Total from sales</p>
+        </div>
+      </div> -->
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/customer.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>1000</h4>
+          <p>Customer transactions</p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/upcoming-events.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h4>4</h4>
+          <p>Upcoming Events</p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#event">
+        <img src="../../../assets/ade.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="add-event" >Publish an Event</h6>
+        </div>
+      </div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="event" tabindex="-1" aria-labelledby="postLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Publish an Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="post-form">
+              <form action="" class="form"  enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input (change)="titleChange($event)" type="text" id="title"  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="des">Description</label>
+                  <textarea  (change)="descriptionChange($event)" class="form-control" id="des" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="date">Date</label>
+                  <input (change)="dateChange($event)" type="date" id="date"  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="time">Time</label>
+                  <input (change)="timeChange($event)" type="text" id="date"  class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label for="formFile" class="form-label">Poster</label>
+                  <input (change)="posterUpload($event)" #image accept="image/*" class="form-control"  type="file" id="formFile">
+                </div>
+                <div class="form-group">
+                  <label for="title">Location</label>
+                  <input (change)="locationChange($event)" type="text" id="location"  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="title">Regular Ticket price</label>
+                  <input (change)="regularChange($event)" type="number" id="ticket"  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="title">VIP ticket price</label>
+                  <input (change)="vipChange($event)"  type="number" id="ticket"  class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="title">Maximum attendance</label>
+                  <input (change)="attendanceChange($event)"  type="number" id="attendance"  class="form-control">
+                </div>
+
+
+                <button  (click)="publishEvent()" type="submit" class='custom btn btn-lg btn-info mt-3'>Publish</button>
+                <!-- (click)=" refresh()" -->
+              </form>
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    </div>
+  </div>
+
+</div>
+

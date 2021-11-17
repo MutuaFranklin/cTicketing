@@ -1,0 +1,29 @@
+
+.icons{
+  display: flex;
+  justify-content: center;
+  background-color: aliceblue;
+
+}
+
+.fab{
+  font-size: 2rem;
+  margin: 2rem;
+
+}
+
+
+a:hover{
+  color: black;
+}
+.ig{
+  color: rgb(238, 9, 219);
+}
+
+.fb{
+  color: rgb(16, 16, 158);
+}
+
+.tw{
+  color: #1DA1F2;
+}

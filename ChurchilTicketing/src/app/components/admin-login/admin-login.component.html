@@ -1,0 +1,56 @@
+<div class="container-fluid login">
+  <app-navbar></app-navbar>
+
+  <div class="container">
+    <div class="col-md-4 login-form ">
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <h5 class="text-center fw-light">Churchill Ticketing Admin Login</h5>
+          <img src="../../../assets/laughi.png" alt=""  class="m-5">
+        </div>
+        <div class="panel-body ">
+
+          <form action="" method="post">
+            <div class="info">
+              <div class="form-floating mb-3 info">
+                <input type="text" [(ngModel)]="login.username" name="username" class="form-control username" id="floatingInput" placeholder="email">
+                <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating info">
+                <input type="password"  [(ngModel)]="login.password" name="password" class="form-control email" id="floatingPassword"
+                  placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+            </div>
+
+
+            <div class="d-grid gap-1 mt-3 login-btn">
+              <button class=" btn btn-outline-primary" (click)="LoginUser()" type="submit" >Sign In</button>
+            </div>
+            <div class="help mt-3 d-flex justify-content-between">
+              <div class="">
+                <input class="form-check-input " type="checkbox" value="True" id="flexCheckDefault">
+                <label class="form-check-label fw-light ms-2" for="flexCheckDefault">
+                  Remember Me
+                </label>
+
+              </div>
+              <label class="form fw-light" for="flexCheckDefault">
+                Forgot password
+              </label>
+            </div>
+          </form>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>

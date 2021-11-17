@@ -1,0 +1,1 @@
+web: gunicorn motiv8.wsgi --log-file -

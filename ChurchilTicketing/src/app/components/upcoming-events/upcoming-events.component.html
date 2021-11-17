@@ -1,0 +1,27 @@
+<div class="container-fluid events">
+    <h4>Upcoming Events</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let event of events" >
+          <div class="card" style="width: 18rem;"  (click)='goToUrl(event.id)'>
+            <img src="https://res.cloudinary.com/dlqnalelc/{{event.poster}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <div class="row">
+                <div class="date col-md-3">
+                  <h6>MON <br> 26 <br>NOV</h6>
+
+                </div>
+                <div class="event-title col-md-9">
+                  <p>{{event.title}}</p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+</div>
+

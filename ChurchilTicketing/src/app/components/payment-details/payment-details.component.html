@@ -1,0 +1,161 @@
+<div class="container-fluid payment">
+  <app-navbar></app-navbar>
+
+  <div class="container">
+    <div class="ro">
+      <a href="event"><i class="fas fa-chevron-circle-left"><span> Back</span></i></a>
+      <h6>Payment details</h6>
+
+
+    </div>
+    <table class="mt-5">
+      <tr>
+        <th>Ticket type</th>
+        <th>Unit cost</th>
+        <th>No. of tickets</th>
+        <th>Sub Total</th>
+      </tr>
+      <tr>
+        <td>Regular</td>
+        <td>Ksh. 1000.00</td>
+        <td>3</td>
+        <td>3000.00</td>
+
+      </tr>
+      <tr>
+        <td>VIP</td>
+        <td>Ksh. 2000.00</td>
+        <td>2</td>
+        <td>4000.00</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Total</td>
+        <td>5</td>
+        <td>7000.00</td>
+      </tr>
+
+    </table>
+    <div class="payment-option mt-5">
+      <h6>Payment method</h6>
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4 checkbox">
+                <div class="form-check">
+                  <input class="form-check-input mpesa" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <img src="../../../assets/mpesa.png" class="img-fluid rounded-start" alt="...">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4 checkbox">
+                <div class="form-check">
+                  <input class="form-check-input airtel"
+                  type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+
+                  >
+
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <img src="../../../assets/airtel.png" class="img-fluid rounded-start" alt="..." >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="payment-instructions mt-3">
+        <div id="mpesa-details">
+          <h6>Send M-PESA Ksh. 500.00 to Pay Bill Business number 303355. Submit the Confirmation Code below.</h6>
+          <p>1. Go to M-PESA on your phone</p>
+          <p>2. Select Pay Bill option</p>
+          <p>3. Enter Business no. 303355</p>
+          <p>4. Enter Account no. 12789297 </p>
+          <p>5. You will receive a confirmation SMS from M-PESA with a Confirmation Code</p>
+          <p>6. After you receive the confirmation SMS, enter your phone number and the Confirmation Code</p>
+          <p>7. Click on Complete</p>
+
+          <div class="confirmation mt-5">
+            <h6>Payment confirmation</h6>
+            <div class="col-md-6 mt-5">
+               <form action="" class="form">
+              <div class="form-group">
+                <input name="phone_number" type="text" id="phone_number" class="form-control"
+                  placeholder="Safaricom phone number" required="required">
+              </div>
+              <div class="form-group">
+                <input name="code" type="text" id="code" class="form-control mt-2"
+                  placeholder="confirmation" required="required">
+              </div>
+
+
+              <div class="button mb-5">
+                <button type="submit" class="btn btn-success mt-3 signup-btn">
+                  Complete
+                </button>
+              </div>
+
+
+
+            </form>
+            </div>
+
+          </div>
+
+        </div>
+        <div id="airtel-details">
+          <h6>Send Airtel Money Ksh. 500.00 to nick-name PESAPAL. Submit the Transaction ID below.</h6>
+          <p>1. Go to Airtel Money on your phone</p>
+          <p>2. Select Send Money Option</p>
+          <p>3. Select Enter Nick-Name Option</p>
+          <p>4. Type the name PESAPAL </p>
+          <p>5. Enter the Amount Ksh. 500.00</p>
+          <p>6. Confirm Amount and Nickname</p>
+          <p>7. Enter your PIN and Send </p>
+          <p>8. You will receive a confirmation SMS from Airtel Money with a Transaction ID</p>
+          <p>9. After you receive the confirmation SMS, enter your phone number and the Transaction ID</p>
+          <p>10. Click on Complete</p>
+          <div class="confirmation mt-5">
+            <h6>Payment confirmation</h6>
+            <div class="col-md-6 mt-5">
+               <form action="" class="form">
+              <div class="form-group">
+                <input name="phone_number" type="text" id="phone_number" class="form-control"
+                  placeholder="Airtel phone number" required="required">
+              </div>
+              <div class="form-group">
+                <input name="code" type="text" id="code" class="form-control mt-2"
+                  placeholder="confirmation" required="required">
+              </div>
+
+
+              <div class="button mb-5">
+                <button type="submit" class="btn btn-success mt-3 signup-btn">
+                  Complete
+                </button>
+              </div>
+
+
+
+            </form>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

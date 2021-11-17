@@ -1,0 +1,75 @@
+.event-details{
+  background-color: aliceblue;
+
+}
+
+.ro h6{
+  text-align: center;
+}
+.fas{
+  font-size: 1rem;
+
+}
+
+.card img{
+  height: 35rem;
+}
+
+
+.date{
+  background-color: rgb(85, 8, 92) !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details{
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.details .fas{
+  margin-bottom: 4%;
+  color: rgb(74, 122, 212);
+}
+
+span{
+  color: black !important;
+}
+
+
+.date h6{
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+
+}
+
+
+#ticket-title, #ticket-table{
+  display: none;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+select{
+  height: 2rem;
+  width: 2rem;
+}
