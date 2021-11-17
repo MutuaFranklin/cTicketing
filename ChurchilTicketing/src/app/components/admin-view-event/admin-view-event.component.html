@@ -1,0 +1,47 @@
+<div class="container-fluid view-event">
+  <button (click)="goBack()" type="button" class="btn btn-warning mt-3">Back</button>
+
+
+  <div class="col-md-10 event">
+    <h5 class="m-5">Event Details</h5>
+        <div class="card mb-3" style="width: 100%;" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="https://res.cloudinary.com/dlqnalelc/{{event.poster}}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div class="row">
+                <div class="date col-md-3">
+                  <h6 class="mt-2">{{event.date| date :'EEE' }}<br>{{event.date| date :'d'}} <br>{{event.date| date :'MMM'}} </h6>
+
+                </div>
+                <div class="col-md-6 title">
+                  <h6 class="card-title">{{event.title}} Churchill show</h6>
+
+                </div>
+                <div class="attendance col-md-3">
+                  <h6 class="mt-2">{{event.max_attendance}}  <br> Max  <br> attendance</h6>
+
+                </div>
+              </div>
+              <div class="other-details">
+                <p class="card-text"><small class="text-muted">Starting {{event.time}}</small></p>
+                <p class="card-text"> {{event.description}}</p>
+
+              </div>
+
+              <div class="tickets mt-5">
+                <button type="button" class="btn fw-light custom m-5">Regular Tickets: Ksh. {{event.regular_ticket}}</button>
+                <button type="button" class="btn fw-light custom">VIP Tickets: Ksh. {{event.vip_ticket}}</button>
+              </div>
+
+            </div>
+          </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
