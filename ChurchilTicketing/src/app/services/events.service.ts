@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -10,6 +10,8 @@ import { environment } from 'src/environments/environment';
 export class EventsService {
 
   apiUrl: string = environment.URL;
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
 
   constructor(private http: HttpClient) {
 
@@ -30,6 +32,12 @@ export class EventsService {
 
   postEvent(eventData:any){
     return this.http.post<any[]>(this.apiUrl + 'events/', eventData )
+  }
+
+   updateEvent(event: any):Observable<any>{
+    let api = this.apiUrl+ 'current_user'
+    return this.http.put(api,event, {headers: this.headers})
+
   }
 
 
