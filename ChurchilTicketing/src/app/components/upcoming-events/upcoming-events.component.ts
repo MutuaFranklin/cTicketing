@@ -38,9 +38,8 @@ export class UpcomingEventsComponent implements OnInit {
     })
     return promise
 
-
-  }Init(): void {
   }
+ 
 
   goToUrl(id: any){
     this.router.navigate(['/event',id])
