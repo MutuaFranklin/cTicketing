@@ -158,7 +158,7 @@
           <td>Ksh. {{event.vip_ticket | number:'1.2-2'}}</td>
           <td>{{event.date}}</td>
           <td><button type="button" class="btn btn-warning" (click)='goToEdit(event.id)'>Edit</button></td>
-          <td><button type="button" class="btn btn-danger">Delete</button></td>
+          <td><button type="button" class="btn btn-danger" (click)="deleteEvent(event.id)">Delete</button></td>
           <td><button type="button" class="btn btn-success" (click)='goToView(event.id)'>View details</button></td>
 
 
@@ -168,7 +168,7 @@
 
 
       </table>
-     
+
 
       </div>
 

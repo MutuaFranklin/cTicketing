@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UpcomingEventsComponent implements OnInit {
 
-  events!:Event[]
+  events!:Event[];
 
 
   constructor(
@@ -39,10 +39,10 @@ export class UpcomingEventsComponent implements OnInit {
     return promise
 
   }
- 
+
 
   goToUrl(id: any){
-    this.router.navigate(['/event',id])
+    this.router.navigate(['event',id])
   }
 
 

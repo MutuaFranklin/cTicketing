@@ -47,8 +47,8 @@ tr:nth-child(even) {
   font-size: 2rem;
 }
 
-img{
-  height: 15vh;
+.payment-option img{
+  height: 5vh;
 }
 
 

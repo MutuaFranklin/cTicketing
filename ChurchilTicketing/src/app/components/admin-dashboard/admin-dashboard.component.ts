@@ -4,7 +4,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { EventsService } from 'src/app/services/events.service';
 import { first } from 'rxjs/operators';
 import { Event } from 'src/app/models/event';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -35,33 +35,49 @@ export class AdminDashboardComponent implements OnInit {
     private authService: AuthenticationService,
     private eventService: EventsService,
     private router: Router,
+    private route: ActivatedRoute,
+
 
     )
     {}
 
   titleChange(event: any) {
     this.title = event.target.value;
+    console.log(this.title)
+
   }
 
   descriptionChange(event: any) {
     this.description = event.target.value;
+    console.log(this.description)
+
   }
 
   dateChange(event: any) {
     this.date = event.target.value;
+    console.log(this.date)
+
   }
   timeChange(event: any) {
     this.time = event.target.value;
+        console.log(this.time)
+
   }
 
   posterUpload(event: any) {
     this.poster = event.target.files[0];
+    console.log(this.poster)
+
   }
   locationChange(event: any) {
     this.location = event.target.value;
+    console.log(this.location)
+
   }
   regularChange(event: any) {
     this.regular_ticket = event.target.value;
+    console.log(this.regular_ticket)
+
   }
   vipChange(event: any) {
     this.vip_ticket = event.target.value;
@@ -69,6 +85,8 @@ export class AdminDashboardComponent implements OnInit {
   }
   attendanceChange(event: any) {
     this.max_attendance = event.target.value;
+    console.log(this.max_attendance)
+
   }
 
   showEventModal(id:any){
@@ -83,7 +101,7 @@ export class AdminDashboardComponent implements OnInit {
     let promise = new Promise <void> ((resolve,reject)=>{
       this.eventService.allEvents().toPromise().then(
         (response:any) => {
-          console.log(response)
+          // console.log(response)
         this.events = response;
         resolve()
       },
@@ -163,6 +181,21 @@ export class AdminDashboardComponent implements OnInit {
       console.log('error',error)
     }
     );
+
+  }
+
+  deleteEvent(id:any){
+    this.eventService.deleteEvent(id).subscribe(data => {
+      alert("Event deleted successfully")
+      window.location.reload();
+
+      // console.log(data)
+
+    }, (error: any)=> {
+
+      console.log(error);
+    })
+
 
   }
 

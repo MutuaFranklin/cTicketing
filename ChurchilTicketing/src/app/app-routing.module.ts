@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },
   { path: 'event/:id', component: EventDetailsComponent  },
-  { path: 'payment', component: PaymentDetailsComponent  },
+  { path: 'payment/:id', component: PaymentDetailsComponent  },
   { path: 'login', component:  AdminLoginComponent  },
   { path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard]  },
   { path: 'admin-view/:id', component: AdminViewEventComponent, canActivate: [AuthGuard] },

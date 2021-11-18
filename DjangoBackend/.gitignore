@@ -1,7 +1,0 @@
-virtual/
-/*pyc
-.env
-*.log
-*.pot
-*.pyc
-__pycache__/

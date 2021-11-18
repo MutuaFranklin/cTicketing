@@ -33,11 +33,19 @@
                 <i class="fas fa-map-marker-alt"><span> {{event.location}}</span></i>
               </div>
             </div>
+
             <div class="description mt-5">
               <p>{{event.description}}</p>
+
+              <div class="tickets mt-5">
+                <button type="button" class="btn fw-light custom m-5">Regular Tickets: Ksh. {{event.regular_ticket}}</button>
+                <button type="button" class="btn fw-light custom">VIP Tickets: Ksh. {{event.vip_ticket}}</button>
+              </div>
               <a id="grab-tickets" class="btn btn-primary mt-5">Grab your tickets now</a>
 
             </div>
+
+
 
           </div>
         </div>
@@ -50,7 +58,7 @@
         Tickets to {{event.title}} Churchill show
       </div>
       <div class="card-body" id="ticket-table">
-        <form action="">
+        <form #eventForm = 'ngForm'>
           <table>
             <tr>
               <th>Ticket type</th>
@@ -62,7 +70,9 @@
               <td>Regular</td>
               <td>Ksh. {{event.regular_ticket}}</td>
               <td>
-                <select name="tickets" id="quantity" (change)="regularChange($event)" required="required">
+                <select name="tickets" id="quantity"
+                [(ngModel)] = "newTransaction.regular_tickets" name="regular" #regular= 'ngModel'
+                (change)="regularChange($event)" required="required">
                   <option value=0>0</option>
                   <option value=1>1</option>
                   <option value=2>2</option>
@@ -80,7 +90,9 @@
               <td>VIP</td>
               <td>Ksh. {{event.vip_ticket}} </td>
               <td>
-                <select name="tickets" id="quantity" (change)="vipChange($event)" required="required">
+                <select name="tickets" id="quantity"
+                [(ngModel)] = "newTransaction.vip_tickets" name="vip" #vip= 'ngModel'
+                (change)="vipChange($event)" required="required">
                   <option value=0>0</option>
                   <option value=1>1</option>
                   <option value=2>2</option>
@@ -96,67 +108,173 @@
               <td></td>
               <td><strong>Total</strong></td>
               <td> <strong>{{(vipTickets-0) + (regularTickets-0)}}</strong></td>
-              <td  *ngIf="!totalVip && !totalRegular"><strong>{{0 | number:'1.2-2'}} </strong></td>
-              <td  *ngIf="totalVip || totalRegular"><strong>{{totalVip + totalRegular | number:'1.2-2'}}</strong></td>
+              <td  *ngIf="!(event.vip_ticket * vipTickets) && !(event.regular_ticket * regularTickets)"><strong>{{0 | number:'1.2-2'}} </strong></td>
+              <td  *ngIf="(event.vip_ticket * vipTickets) || (event.regular_ticket * regularTickets)"><strong>{{(event.vip_ticket * vipTickets) + (event.regular_ticket * regularTickets) | number:'1.2-2'}}</strong></td>
             </tr>
 
           </table>
+          <div class="container-fluid customer">
+            <h6 class="mt-4">Customer Details</h6>
+             <div class="col-md-4">
+            <div class="form-item">
+              <input [(ngModel)] = "newTransaction.first_name" name="first_name" #first_name= 'ngModel' type="text" class="form-control input mb-3" placeholder="First name"
+                required="required">
+            </div>
+            <div class="form-item">
+              <input [(ngModel)] = "newTransaction.last_name" name="last_name" #last_name= 'ngModel' type="text" class="form-control input mb-3" placeholder="Last name"
+                required="required">
+            </div>
 
-          <button type="submit" class="btn btn-danger mt-5" id="payment-btn" data-bs-toggle="modal"
-            data-bs-target="#customer-details">MAKE PAYMENTS</button>
-        </form>
-        <!-- Modal -->
-        <div class="modal fade" id="customer-details" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-          aria-labelledby="addcommentLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">CUSTOMER DETAILS</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="form">
-                  <form action="" class="form">
-                    <div class="form-item">
-                      <input name="first_name" type="text" class="form-control input mb-3" placeholder="First name"
-                        required="required">
+            <div class="form-item">
+              <input [(ngModel)] = "newTransaction.email" name="email" #email= 'ngModel' type="email" class="form-control input mb-3" placeholder="Email"
+                required="required">
+            </div>
+
+
+
+
+            <div class="button">
+
+            </div>
+            <div class="payment-option container-fluid mt-5">
+              <h6>Payment method</h6>
+              <div class="row mt-5">
+                <div class="col-md-6">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4 checkbox">
+                        <div class="form-check">
+                          <input class="form-check-input mpesa" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <img src="../../../assets/mpesa.png" class="img-fluid rounded-start" alt="...">
+                        </div>
+                      </div>
                     </div>
-                    <div class="form-item">
-                      <input name="last_name" type="text" class="form-control input mb-3" placeholder="Last name"
-                        required="required">
-                    </div>
-
-                    <div class="form-item">
-                      <input name="email" type="email" class="form-control input mb-3" placeholder="Email"
-                        required="required">
-                    </div>
-                    <div class="form-group">
-                      <input name="phone_number" type="text" id="phone_number" class="form-control"
-                        placeholder="Phone number" required="required">
-                    </div>
-
-
-                    <div class="button">
-                      <button type="submit" class="btn btn-success mt-3 signup-btn">
-                        PROCEED TO MAKE PAYMENTS
-                      </button>
-                    </div>
-
-
-
-                  </form>
+                  </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                      <div class="col-md-4 checkbox">
+                        <div class="form-check">
+                          <input class="form-check-input airtel"
+                          type="radio" name="flexRadioDefault" id="flexRadioDefault1"
 
+                          >
 
-
-
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <img src="../../../assets/airtel.png" class="img-fluid rounded-start" alt="..." >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <div class="payment-instructions  container-fluid mt-3">
+                <div id="mpesa-details">
+                  <p >Send M-PESA Ksh. 500.00 to Pay Bill Business number 303355. Submit the Confirmation Code below.</p>
+                  <p>1. Go to M-PESA on your phone</p>
+                  <p>2. Select Pay Bill option</p>
+                  <p>3. Enter Business no. 303355</p>
+                  <p>4. Enter Account no. 12789297 </p>
+                  <p>5. You will receive a confirmation SMS from M-PESA with a Confirmation Code</p>
+                  <p>6. After you receive the confirmation SMS, enter your phone number and the Confirmation Code</p>
+                  <p>7. Click on Complete</p>
+
+                  <div class="confirmation mt-5">
+                    <h6>Payment confirmation</h6>
+                    <div class="col-md-12 mt-5">
+                      <div class="form-group">
+                        <input name="phone_number"
+                        [(ngModel)] = "newTransaction.phone_number" name="phone_number" #phone_number= 'ngModel'
+                        type="text" id="phone_number" class="form-control"
+                          placeholder="Safaricom phone number" required="required">
+                      </div>
+                      <div class="form-group">
+                        <input name="code"
+                        [(ngModel)] = "newTransaction.transaction_code" name="transaction_code" #transaction_code= 'ngModel'
+                        type="text" id="code" class="form-control mt-2"
+                          placeholder="confirmation" required="required">
+                      </div>
+
+
+                      <button
+
+                        [disabled]="!eventForm.valid"
+                        type="submit" class="btn btn-success mt-3 mb-3 signup-btn">
+                          CONFIRM PAYMENT
+                      </button>
+
+
+                      <!-- (click)='goToPayment(event.id)' -->
+
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+                <div id="airtel-details">
+                  <p>Send Airtel Money Ksh. 500.00 to nick-name PESAPAL. Submit the Transaction ID below.</p>
+                  <p>1. Go to Airtel Money on your phone</p>
+                  <p>2. Select Send Money Option</p>
+                  <p>3. Select Enter Nick-Name Option</p>
+                  <p>4. Type the name PESAPAL </p>
+                  <p>5. Enter the Amount Ksh. 500.00</p>
+                  <p>6. Confirm Amount and Nickname</p>
+                  <p>7. Enter your PIN and Send </p>
+                  <p>8. You will receive a confirmation SMS from Airtel Money with a Transaction ID</p>
+                  <p>9. After you receive the confirmation SMS, enter your phone number and the Transaction ID</p>
+                  <p>10. Click on Complete</p>
+                  <div class="confirmation mt-5">
+                    <h6>Payment confirmation</h6>
+                    <div class="col-md-12 mt-5">
+                       <form action="" class="form">
+                      <div class="form-group">
+                        <input
+                        [(ngModel)] = "newTransaction.phone_number" name="phone_number" #phone_number= 'ngModel'
+                        type="text" id="phone_number" class="form-control"
+                          placeholder="Airtel phone number" required="required">
+                      </div>
+                      <div class="form-group">
+                        <input name="code" type="text" id="code" class="form-control mt-2"
+                          placeholder="confirmation" required="required">
+                      </div>
+
+
+                      <div class="button mb-3">
+                        <button
+
+                        [disabled]="!eventForm.valid"
+                        type="submit" class="btn btn-success mt-3 signup-btn">
+                          CONFIRM PAYMENT
+                      </button>
+
+                      </div>
+
+
+
+                    </form>
+                    </div>
+
+                  </div>
+
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          </div>
+
+
+
+          </form>
 
 
       </div>

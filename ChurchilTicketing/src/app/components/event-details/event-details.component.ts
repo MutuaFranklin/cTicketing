@@ -1,6 +1,8 @@
 import { Route } from '@angular/compiler/src/core';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';import { ActivatedRoute, Router } from '@angular/router';
+import { Event } from 'src/app/models/event';
+import { Transaction } from 'src/app/models/transaction';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({
@@ -14,12 +16,24 @@ export class EventDetailsComponent implements OnInit {
   totalRegular: number =0;
   vipTickets: number = 0;
   totalVip: number = 0;
-  regularUnit!: number;
+  regularUnit: number =0;
   vipUnit!:number;
   totalNoTickets: number =0;
   totalAmount:number =0;
   event:any
+  // newTransaction!: Transaction[];
+  error: any;
 
+
+
+  newTransaction = new Transaction("", "","", "", "", 0,0,0, new Date(),"");
+  @Output() addTransaction = new EventEmitter<Transaction>();
+
+
+  submitTransaction(form: NgForm){
+    this.addTransaction.emit(this.newTransaction);
+    this.newTransaction = new Transaction("", "","", "", "", 0,0,0, new Date(),"");
+  }
 
 
   constructor(
@@ -34,8 +48,6 @@ export class EventDetailsComponent implements OnInit {
 
   regularChange(event:any){
     this.regularTickets = event.target.value;
-    this.regularUnit = 500
-    this.totalRegular = this.regularTickets * this.regularUnit
 
 
    }
@@ -54,6 +66,7 @@ export class EventDetailsComponent implements OnInit {
     window.scrollTo(0,document.body.scrollHeight);
   }
 
+   totalCost = document.getElementById("app");
 
 
   ngOnInit(): void {
@@ -65,10 +78,7 @@ export class EventDetailsComponent implements OnInit {
         (response:any) => {
         // console.log(response.regular_ticket)
         this.event = response;
-        this.regularUnit = response.regular_ticket
-        this.totalRegular = this.regularTickets * this.regularUnit
 
-        console.log(this.regularUnit)
 
 
         resolve()
@@ -77,19 +87,9 @@ export class EventDetailsComponent implements OnInit {
       (error:string) => {
 
       })
+
+
     })
-
-
-
-
-
-
-
-
-
-
-
-
 
      // Jquery
      $('#grab-tickets').on('click', function () {
@@ -110,6 +110,42 @@ export class EventDetailsComponent implements OnInit {
    $("#grab-tickets").on('click' ,function() {
      window.location.hash = "payment-btn"+$(this).attr("id");
    });
+
+   $('.mpesa').on('change', function() {
+    $("#airtel-details").hide();
+    $("#mpesa-details").fadeIn(3000);
+    window.scrollTo(0,document.body.scrollHeight);
+
+
+
+  });
+  $('.airtel').on('change', function() {
+    $("#airtel-details").fadeIn(3000);
+    $("#mpesa-details").hide();
+    window.scrollTo(0,document.body.scrollHeight);
+
+
+
+  });
   }
+
+  makeTransaction(){
+    this.eventService.transaction(this.newTransaction).subscribe( response => {
+      // console.log(response)
+      alert('Transaction has been made'),
+      this.router.navigate(['landing'])
+    },
+    error => {
+      this.error = error
+      console.log('error',error)
+    }
+    );
+  }
+
+
+  goToPayment(id: any){
+    this.router.navigate(['payment/',id])
+  }
+
 
 }

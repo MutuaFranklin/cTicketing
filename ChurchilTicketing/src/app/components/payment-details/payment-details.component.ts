@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventsService } from 'src/app/services/events.service';
+
 
 @Component({
   selector: 'app-payment-details',
@@ -7,9 +11,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentDetailsComponent implements OnInit {
 
-  constructor() { }
+  event!:any
+
+
+  @Input()
+  newTransaction!: any[];
+  
+  constructor(
+    private router: Router,
+    private eventService: EventsService,
+    private route: ActivatedRoute,
+    private previous: Location,
+
+  ) { }
 
   ngOnInit(): void {
+
+    let id = this.route.snapshot.paramMap.get('id');
+
+
+    let promise = new Promise <void> ((resolve,reject)=>{
+      this.eventService.SingleEvent(id).toPromise().then(
+        (response:any) => {
+        // console.log(response.regular_ticket)
+        this.event = response;
+
+
+
+        resolve()
+      },
+
+      (error:string) => {
+
+      })
+
+
+    })
 
     $('.mpesa').on('change', function() {
       $("#airtel-details").hide();
@@ -27,6 +64,9 @@ export class PaymentDetailsComponent implements OnInit {
 
 
     });
+  }
+  goBack() {
+    this.previous.back(); // <-- go back to previous location on cancel
   }
 
 

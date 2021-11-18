@@ -70,7 +70,7 @@ export class AdminEditEventComponent implements OnInit {
         .toPromise()
         .then(
           (response: any) => {
-            console.log(response);
+            // console.log(response);
             this.event = response;
 
             resolve();
@@ -93,11 +93,11 @@ export class AdminEditEventComponent implements OnInit {
     eventData.append('vip_ticket', this.vip_ticket)
     eventData.append('max_attendance', this.max_attendance)
 
+    let id = this.route.snapshot.paramMap.get('id');
 
-    this.eventService.updateEvent(this.event).subscribe(data => {
+    this.eventService.updateEvent(this.event, id).subscribe(data => {
       alert("Event updated successfully")
       window.location.reload();
-
 
       // console.log(data)
 

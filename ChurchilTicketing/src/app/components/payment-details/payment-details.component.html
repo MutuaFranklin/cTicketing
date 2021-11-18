@@ -3,8 +3,8 @@
 
   <div class="container">
     <div class="ro">
-      <a href="event"><i class="fas fa-chevron-circle-left"><span> Back</span></i></a>
-      <h6>Payment details</h6>
+      <a (click)="goBack()"><i class="fas fa-chevron-circle-left"><span> Back</span></i></a>
+      <h6>{{event.title}} show payment details</h6>
 
 
     </div>
@@ -17,15 +17,15 @@
       </tr>
       <tr>
         <td>Regular</td>
-        <td>Ksh. 1000.00</td>
+        <td>Ksh. {{event.regular_ticket}}</td>
         <td>3</td>
-        <td>3000.00</td>
+        <td></td>
 
       </tr>
       <tr>
         <td>VIP</td>
-        <td>Ksh. 2000.00</td>
-        <td>2</td>
+        <td>Ksh. {{event.vip_ticket}}</td>
+        <td>2 {{newTransaction}}</td>
         <td>4000.00</td>
       </tr>
       <tr>

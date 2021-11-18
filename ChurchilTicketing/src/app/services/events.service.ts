@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 
@@ -34,10 +34,37 @@ export class EventsService {
     return this.http.post<any[]>(this.apiUrl + 'events/', eventData )
   }
 
-   updateEvent(event: any):Observable<any>{
-    let api = this.apiUrl+ 'current_user'
-    return this.http.put(api,event, {headers: this.headers})
+   updateEvent(event: any, id:any):Observable<any>{
+    let api = this.apiUrl+ `single-event/${id}`
+    return this.http.put(api,event)
 
+  }
+
+  deleteEvent(id:any):Observable<any>{
+    let api = this.apiUrl+ `single-event/${id}`
+    return this.http.delete(api)
+
+  }
+
+  transaction(transactionDetails: any): Observable<any> {
+    let api = `${this.apiUrl}register`;
+    return this.http.post(api, transactionDetails)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+   // Error
+   handleError(error: HttpErrorResponse) {
+    let msg = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      msg = error.error.message;
+    } else {
+      // server-side error
+      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return throwError(msg);
   }
 
 

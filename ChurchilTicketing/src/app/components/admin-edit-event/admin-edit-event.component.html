@@ -8,40 +8,40 @@
       <form action="" class="form" enctype="multipart/form-data">
         <div class="form-group">
           <label for="title">Title</label>
-          <input (change)="titleChange($event)" type="text" id="title" class="form-control">
+          <input (change)="titleChange($event)" value="{{event.title}}" type="text" id="title" class="form-control">
         </div>
         <div class="form-group">
           <label for="des">Description</label>
-          <textarea (change)="descriptionChange($event)" class="form-control" id="des" rows="3"></textarea>
+          <textarea (change)="descriptionChange($event)" value="{{event.description}}" class="form-control" id="des" rows="3"></textarea>
         </div>
         <div class="form-group">
           <label for="date">Date</label>
-          <input (change)="dateChange($event)" type="date" id="date" class="form-control">
+          <input (change)="dateChange($event)" value="{{event.date}}" type="date" id="date" class="form-control">
         </div>
         <div class="form-group">
           <label for="time">Time</label>
-          <input (change)="timeChange($event)" type="text" id="date" class="form-control">
+          <input (change)="timeChange($event)" value="{{event.time}}" type="text" id="date" class="form-control">
         </div>
         <div class="mb-3">
           <label for="formFile" class="form-label">Poster</label>
-          <input (change)="posterUpload($event)" #image accept="image/*" class="form-control" type="file"
+          <input (change)="posterUpload($event)" value="{{event.poster}}" #image accept="image/*" class="form-control" type="file"
             id="formFile">
         </div>
         <div class="form-group">
           <label for="title">Location</label>
-          <input (change)="locationChange($event)" type="text" id="location" class="form-control">
+          <input (change)="locationChange($event)" value="{{event.location}}" type="text" id="location" class="form-control">
         </div>
         <div class="form-group">
           <label for="title">Regular Ticket price</label>
-          <input (change)="regularChange($event)" type="number" id="ticket" class="form-control">
+          <input (change)="regularChange($event)" value="{{event.regular_ticket}}" type="number" id="ticket" class="form-control">
         </div>
         <div class="form-group">
           <label for="title">VIP ticket price</label>
-          <input (change)="vipChange($event)" type="number" id="ticket" class="form-control">
+          <input (change)="vipChange($event)" value="{{event.vip_ticket}}" type="number" id="ticket" class="form-control">
         </div>
         <div class="form-group">
           <label for="title">Maximum attendance</label>
-          <input (change)="attendanceChange($event)" type="number" id="attendance" class="form-control">
+          <input (change)="attendanceChange($event)" value="{{event.max_attendance}}" type="number" id="attendance" class="form-control">
         </div>
 
 

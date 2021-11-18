@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ChurchilTicketing';
+  newTransaction:any;
+
+
+  eventToPayment($event:any) {
+    this.newTransaction = $event;
+  }
 }
