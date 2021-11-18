@@ -11,7 +11,9 @@ import { EventsService } from 'src/app/services/events.service';
   styleUrls: ['./event-details.component.css']
 })
 export class EventDetailsComponent implements OnInit {
-
+  todayDate: Date = new Date()
+  eventDate!:Date;
+  daysToEvent!:number;
   regularTickets: number =0;
   totalRegular: number =0;
   vipTickets: number = 0;
@@ -21,7 +23,7 @@ export class EventDetailsComponent implements OnInit {
   totalNoTickets: number =0;
   totalAmount:number =0;
   event:any
-  // newTransaction!: Transaction[];
+  // transaction!: Transaction;
   error: any;
 
 
@@ -78,6 +80,11 @@ export class EventDetailsComponent implements OnInit {
         (response:any) => {
         // console.log(response.regular_ticket)
         this.event = response;
+        this.eventDate =(response.date).getTime()
+
+
+
+
 
 
 
@@ -129,10 +136,10 @@ export class EventDetailsComponent implements OnInit {
   });
   }
 
-  makeTransaction(){
-    this.eventService.transaction(this.newTransaction).subscribe( response => {
+  makeTransaction(id:any){
+    this.eventService.transaction(this.newTransaction, id).subscribe( response => {
       // console.log(response)
-      alert('Transaction has been made'),
+      alert('Transaction Confirmed. Thank you for being a Churchill show fan'),
       this.router.navigate(['landing'])
     },
     error => {

@@ -19,13 +19,12 @@ urlpatterns = [
     # path('events/', views.EventList.as_view()),
     path('events/', views.events ,name = 'events'),
     path('publish-event/', views.PostEvent.as_view()),
-    path('transaction/', views.transaction ,name = 'transaction'),
+    path('transaction/<id>', views.transaction ,name = 'transaction'),
+    path('all_transactions', views.all_transactions ,name = 'all_transactions'),
     path('search/', views.SearchEventAPIView.as_view()),
     path('current_user', views.current_user,name='current_user'),
     re_path(r'^event/$', views.FilterEventList.as_view()),
     re_path(r'single-event/(?P<event_pk>[0-9]+)/$', views.event_id, name ='single_event'),
-
-
 
 
 

@@ -27,6 +27,7 @@
           <img src="../../../assets/past-events.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h4>50</h4>
+
             <p>Past Events</p>
           </div>
         </div>
@@ -51,7 +52,7 @@
         <div class="card" style="width: 18rem;">
           <img src="../../../assets/upcoming-events.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4>4</h4>
+            <h4>{{events.length}}</h4>
             <p>Upcoming Events</p>
           </div>
         </div>
@@ -184,9 +185,49 @@
     <h5>Churchill Show Ticketing Admin Panel</h5>
     <div class="container-fluid transactions">
       <h6 class="m-4">Transactions</h6>
-      <p>Coming soon</p>
+      <div class="col-md-12">
+        <table class="mt-5">
+        <tr>
+          <th>Index</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>Email</th>
+          <th>Event</th>
+          <th>Regular Tickets</th>
+          <th>Vip Tickets</th>
+          <th>Total Spend</th>
+          <th>Transacted On</th>
+          <th>Transaction Code</th>
+
+        </tr>
+        <tr *ngFor="let transaction of transactions">
+          <td>{{transaction.id}}</td>
+          <td>{{transaction.first_name}}</td>
+          <td>{{transaction.last_name}}</td>
+          <td>{{transaction.phone_number}}</td>
+          <td>{{transaction.email}}</td>
+          <td>{{transaction.event.title}}</td>
+          <td>{{transaction.regular_tickets}} @ Ksh. {{transaction.event.regular_ticket | number:'1.2-2'}} each</td>
+          <td>{{transaction.vip_tickets}} @ Ksh. {{transaction.event.vip_ticket | number:'1.2-2'}} each</td>
+          <td>{{transaction.total_spend}}</td>
+          <td>{{transaction.transacted_on |date}}</td>
+          <td>{{transaction.transaction_code}}</td>
+
+
+
+        </tr>
+
+
+
+
+      </table>
+
+
+      </div>
     </div>
 
   </div>
 
 </div>
+

@@ -5,6 +5,7 @@ import { EventsService } from 'src/app/services/events.service';
 import { first } from 'rxjs/operators';
 import { Event } from 'src/app/models/event';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Transaction } from 'src/app/models/transaction';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   currentUser!:Admin;
   showModal!: boolean;
   event:any;
+  transactions!: Transaction[];
 
 
 
@@ -108,7 +110,17 @@ export class AdminDashboardComponent implements OnInit {
       (error:string) => {
 
       })
+      this.eventService.all_transactions().toPromise().then(
+        (response:any) => {
+          console.log(response)
+        this.transactions = response;
+        resolve()
+      },
+      (error:string) => {
+
+      })
     })
+
 
     this.authService.getCurrentUser().pipe(first()).subscribe((loggedUser: Admin) => {
       this.currentUser = loggedUser;

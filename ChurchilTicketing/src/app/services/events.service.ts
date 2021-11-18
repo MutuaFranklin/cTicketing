@@ -34,7 +34,7 @@ export class EventsService {
     return this.http.post<any[]>(this.apiUrl + 'events/', eventData )
   }
 
-   updateEvent(event: any, id:any):Observable<any>{
+  updateEvent(event: any, id:any):Observable<any>{
     let api = this.apiUrl+ `single-event/${id}`
     return this.http.put(api,event)
 
@@ -46,13 +46,18 @@ export class EventsService {
 
   }
 
-  transaction(transactionDetails: any): Observable<any> {
-    let api = `${this.apiUrl}register`;
-    return this.http.post(api, transactionDetails)
+  transaction(transactionDetails: any, id:any): Observable<any> {
+    let api = `${this.apiUrl}transaction/${id}`;
+    return this.http.post(api,transactionDetails)
       .pipe(
         catchError(this.handleError)
       )
   }
+
+  all_transactions():Observable<any[]>{
+    return this.http.get<any[]>(this.apiUrl + 'all_transactions')
+  }
+
 
    // Error
    handleError(error: HttpErrorResponse) {

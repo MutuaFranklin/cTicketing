@@ -87,13 +87,13 @@ def events(request):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-        
+
+# Buy ticket transaction()        
 @api_view(['GET', 'POST'])
 @permission_classes((AllowAny, ))
-def transaction(request):
+def transaction(request, id):
     if request.method == 'GET':
         transaction = Transaction.objects.all()
-       
         transaction_serializer = TransactionSerializer(transaction, many=True)
         return JsonResponse(transaction_serializer.data, safe=False)
     
@@ -101,11 +101,19 @@ def transaction(request):
         serializers = TransactionSerializer(data=request.data)
 
         if serializers.is_valid():
-            serializers.save()
+            serializers.save(event = Event.objects.filter(id=id).first())
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-           
+
+# View all transactions
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def all_transactions(request):
+    if request.method == 'GET':
+        transaction = Transaction.objects.all()
+        transaction_serializer = TransactionSerializer(transaction, many=True)
+        return JsonResponse(transaction_serializer.data, safe=False)
+ 
 
 
 
