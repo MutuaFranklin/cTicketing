@@ -197,16 +197,18 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   deleteEvent(id:any){
-    this.eventService.deleteEvent(id).subscribe(data => {
-      alert("Event deleted successfully")
-      window.location.reload();
+    if(confirm("Are you sure you want to delete?")){
+      this.eventService.deleteEvent(id).subscribe(data => {
+        alert("Event deleted successfully")
+        window.location.reload();
 
-      // console.log(data)
+        // console.log(data)
 
-    }, (error: any)=> {
+      }, (error: any)=> {
 
-      console.log(error);
-    })
+        console.log(error);
+      })
+    }
 
 
   }

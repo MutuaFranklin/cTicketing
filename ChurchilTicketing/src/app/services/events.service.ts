@@ -35,7 +35,7 @@ export class EventsService {
   }
 
   updateEvent(event: any, id:any):Observable<any>{
-    let api = this.apiUrl+ `single-event/${id}`
+    let api = this.apiUrl+ `edit-event/${id}`
     return this.http.put(api,event)
 
   }
