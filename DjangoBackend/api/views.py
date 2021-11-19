@@ -190,15 +190,49 @@ def event_id(request, event_pk):
         return JsonResponse(event_serializer.data)
     elif request.method == 'PUT':
         event_data = JSONParser().parse(request)
-        event_serializer = EventSerializer(event, data=event_data)
+        event_serializer = EventSerializer(instance=event, data=request.data)
+        # event_serializer = EventSerializer(event, data=event_data)
         if event_serializer.is_valid():
             event_serializer.save()
-            return JsonResponse(event_serializer.data)
-        return JsonResponse(event_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(event_serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(event_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        
+        # if event_serializer.is_valid():
+        #     event_serializer.save()
+        #     return JsonResponse(event_serializer.data)
+        # return JsonResponse(event_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
         event.delete()
         return JsonResponse({'message': 'Event was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+
+
+class EditEvent(APIView):
+    permission_classes = (AllowAny,)
+    def get_event(self, pk):
+        try:
+            return Event.objects.get(pk=pk)
+        except Event.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        event = self.get_event(pk)
+        serializers = EventSerializer(event)
+        return Response(serializers.data)
+
+    
+    def put(self, request, pk, format=None):
+        event = self.get_event(pk)
+        serializers = EventSerializer(event, request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    
 
 
 @api_view(['GET', 'PUT'])

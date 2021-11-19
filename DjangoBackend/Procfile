@@ -1,1 +1,1 @@
-web: gunicorn motiv8.wsgi --log-file -
+web: gunicorn cTicketing.wsgi --log-file -

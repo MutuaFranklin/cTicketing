@@ -25,8 +25,10 @@ urlpatterns = [
     path('search/', views.SearchEventAPIView.as_view()),
     path('current_user', views.current_user,name='current_user'),
     path('sendTemplateEmail', MailSenderAPIView.as_view(), name="mail-sender"),
+    path('edit-event/<pk>',views.EditEvent.as_view()),
     re_path(r'^event/$', views.FilterEventList.as_view()),
     re_path(r'single-event/(?P<event_pk>[0-9]+)/$', views.event_id, name ='single_event'),
+
 
 
 
