@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
 
-  URL:`http://localhost:8000/api/`,
-  
+  // URL:`http://localhost:8000/api/`,
+  URL: `https://cticketing.herokuapp.com/api/`,
+
+
   firebaseConfig: {
     apiKey: "AIzaSyB-d9_t-4OOnh3gpRQK9It8V4zqWLeMFgQ",
     authDomain: "churchillticketing.firebaseapp.com",

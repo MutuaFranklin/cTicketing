@@ -1,6 +1,15 @@
 .login{
   background-color: aliceblue;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.lg{
+  display: flex;
+  justify-content: center;
 
 }
 h5{

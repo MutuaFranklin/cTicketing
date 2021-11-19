@@ -15,6 +15,7 @@ router.register(r'users', views.UserViewSet)
 
 
 urlpatterns = [
+    path('swagger/', schema_view),
     path('', include(router.urls)),
     path('auth/',obtain_auth_token),
     # path('events/', views.EventList.as_view()),

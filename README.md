@@ -77,6 +77,7 @@ As an Admin, I would able to:
 - PostgreSQL
 - Heroku
 - Github
+- Sendgrid
 
 ## Live link
 

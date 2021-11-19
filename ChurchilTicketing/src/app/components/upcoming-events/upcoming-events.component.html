@@ -5,17 +5,15 @@
         <div class="col-md-3" *ngFor="let event of events" >
           <div class="card" style="width: 18rem;"  (click)='goToUrl(event.id)'>
             <img src="https://res.cloudinary.com/dlqnalelc/{{event.poster}}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="row">
+            <div class="card-body d-flex">
                 <div class="date col-md-3">
-                  <h6 class="mt-2">{{event.date| date :'EEE' }}<br>{{event.date| date :'d'}} <br>{{event.date| date :'MMM'}} </h6>
+                  <h6 class="m-1">{{event.date| date :'EEE' }}<br>{{event.date| date :'d'}} <br>{{event.date| date :'MMM'}} </h6>
 
                 </div>
                 <div class="event-title col-md-9">
                   <p>{{event.title}}</p>
 
                 </div>
-              </div>
             </div>
           </div>
 

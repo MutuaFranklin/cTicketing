@@ -4,7 +4,6 @@
 }
 
 .image{
-  height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,6 +17,7 @@ img{
 
 
 .details{
+  height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,7 @@ img{
 }
 
 .details p{
-  font-size: 1.5vw;
+  font-size: 22px;
 }
 
 .custom-btn{
@@ -68,3 +68,48 @@ img{
 .footer p{
   margin: 3%;
 }
+
+
+
+
+
+/* RESPONSIVENESS */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+.details{
+  height: 25vh;
+}
+
+.details h1{
+  font-size: 40px !important;
+}
+
+.details h2{
+  font-size: 30px !important;
+}
+
+
+
+
+
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px)and (max-width:991px){
+
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) .. */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

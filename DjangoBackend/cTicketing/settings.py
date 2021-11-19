@@ -91,8 +91,14 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:4200',
-
+    'https://mutuafranklin.github.io/cTicketingApp/',
 )
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:4200",
+    "https://mutuafranklin.github.io/cTicketingApp/",
+
+]
 
 ROOT_URLCONF = 'cTicketing.urls'
 
@@ -137,7 +143,7 @@ if config('MODE')=="dev":
 else:
    DATABASES = {
        'default': dj_database_url.config(
-           default=config('HOMESERVICES_DB')
+           default=config('CTICKETING_DB')
        )
    }
 

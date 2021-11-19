@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminEditEventComponent } from './components/admin-edit-event/admin-edit-event.component';
 import { AdminViewEventComponent } from './components/admin-view-event/admin-view-event.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 // import { AngularFireModule } from '@angular/fire';
 // import { AngularFireDatabaseModule } from '@angular/fire/database';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -44,6 +45,8 @@ import { AdminViewEventComponent } from './components/admin-view-event/admin-vie
     BrowserAnimationsModule, // required animations module
     NgxPaginationModule,
     ToastrModule.forRoot(),
+    NgHttpLoaderModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
