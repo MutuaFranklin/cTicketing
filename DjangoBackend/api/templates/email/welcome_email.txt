@@ -1,0 +1,6 @@
+Hello {{first_name}}
+
+Confirmed payment of {{transaction.regular_tickets}} regular tickets and {{transaction.vip_tickets}} VIP tickets for {{transaction.event.title}} Churchill Live Show scheduled on {{transaction.event.date}}. Thank you!
+
+
+

@@ -19,18 +19,18 @@
 <div id="main">
   <div class="dashboard">
     <span style="font-size:30px;cursor:pointer" class="openNav" onclick="openNav()">&#9776;</span>
-    <h5>Churchill Show Ticketing Admin Panel</h5>
+    <h5 class="mt-3">Churchill Show Ticketing Admin Panel</h5>
 
-    <div class="container-fluid icons">
+    <div class="container icons">
       <div class="row">
-        <div class="card" style="width: 18rem;">
+        <!-- <div class="card" style="width: 18rem;">
           <img src="../../../assets/past-events.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h4>50</h4>
 
             <p>Past Events</p>
           </div>
-        </div>
+        </div> -->
 
         <div class="card" style="width: 18rem;">
           <img src="../../../assets/ticket.png" class="card-img-top" alt="...">
@@ -41,19 +41,19 @@
         </div>
 
 
-        <div class="card" style="width: 18rem;">
+        <div class="card transactions-btn" style="width: 18rem;">
           <img src="../../../assets/customer.jpg" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4>1000</h4>
+            <h4>{{transactions.length}}</h4>
             <p>Customer transactions</p>
           </div>
         </div>
 
-        <div class="card" style="width: 18rem;">
+        <div class="card events-btn" style="width: 18rem;">
           <img src="../../../assets/upcoming-events.jpg" class="card-img-top" alt="...">
           <div class="card-body">
             <h4>{{events.length}}</h4>
-            <p>Upcoming Events</p>
+            <p>Events</p>
           </div>
         </div>
 
@@ -210,7 +210,7 @@
           <td>{{transaction.event.title}}</td>
           <td>{{transaction.regular_tickets}} @ Ksh. {{transaction.event.regular_ticket | number:'1.2-2'}} each</td>
           <td>{{transaction.vip_tickets}} @ Ksh. {{transaction.event.vip_ticket | number:'1.2-2'}} each</td>
-          <td>{{transaction.total_spend}}</td>
+          <td>{{transaction.regular_tickets * transaction.event.regular_ticket + transaction.vip_tickets * transaction.event.vip_ticket }}</td>
           <td>{{transaction.transacted_on |date}}</td>
           <td>{{transaction.transaction_code}}</td>
 

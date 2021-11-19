@@ -88,7 +88,7 @@ export class AdminEditEventComponent implements OnInit {
     eventData.append('poster', this.poster)
     eventData.append('date', this.date)
     eventData.append('time', this.time)
-    eventData.append('location', this.date)
+    eventData.append('location', this.location)
     eventData.append('regular_ticket', this.regular_ticket)
     eventData.append('vip_ticket', this.vip_ticket)
     eventData.append('max_attendance', this.max_attendance)

@@ -16,6 +16,10 @@ EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
+# Twilio Sendgrid API key
+SENDGRID_API_KEY = config('SENDGRID_API')
+DEFAULT_FROM_EMAIL = config('EMAIL_HOST_USER')
+
 
 #adding config
 cloudinary.config( 

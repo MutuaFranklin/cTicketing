@@ -5,3 +5,4 @@ virtual/
 *.pot
 *.pyc
 __pycache__/
+notes.txt

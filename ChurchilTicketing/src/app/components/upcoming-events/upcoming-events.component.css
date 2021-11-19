@@ -4,6 +4,10 @@
   justify-content: center;
   align-items: center;
 }
+.events h4{
+  font-family: 'Pacifico', cursive;
+
+}
 
 .card{
   margin: 1vw;

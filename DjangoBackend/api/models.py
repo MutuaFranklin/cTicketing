@@ -24,7 +24,7 @@ class Event(models.Model):
        return self.title
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['date']
 
 
 class Transaction(models.Model):
